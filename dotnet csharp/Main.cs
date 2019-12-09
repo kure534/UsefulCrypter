@@ -4,26 +4,19 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-namespace UsefulCryptor
+namespace UsefulCrypter
 {
-    public interface ICryptor<T>
+    public interface ICrypter<T>
     {
         IMessage<T> Crypt(IMessage<T> message);
     }
-    public interface IEncryptor<T>
+    public interface IEncrypter<T>
     {
         IMessage<T> Encrypt(IMessage<T> message);
     }
     public interface IMessage<T>
     {
         Dictionary<FieldInfo, T> GetElements();
-    }
-    public class TextMessage<T> : IMessage<T>
-    {
-        Dictionary<FieldInfo, T> IMessage<T>.GetElements()
-        {
-            throw new NotImplementedException();
-        }
     }
     public class SerializedMessage<T>
     {
