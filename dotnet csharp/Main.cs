@@ -6,18 +6,30 @@ using System.Collections.Generic;
 
 namespace UsefulCrypter
 {
+    /// <summary>
+    /// Общий интерфейс для шифраторов
+    /// </summary>
+    /// <typeparam name="T">Тип данных в котором будут хранится поля SerializedMessage</typeparam>
     public interface ICrypter<T>
     {
-        IMessage<T> Crypt(IMessage<T> message);
+        void Crypt(SerializedMessage<T> message);
     }
+    /// <summary>
+    /// Общий интерфейс для дешифраторов
+    /// </summary>
+    /// <typeparam name="T">Тип данных в котором будут хранится поля SerializedMessage</typeparam>
     public interface IEncrypter<T>
     {
-        IMessage<T> Encrypt(IMessage<T> message);
+        void Encrypt(SerializedMessage<T> message);
     }
     public interface IMessage<T>
     {
         Dictionary<FieldInfo, T> GetElements();
     }
+    /// <summary>
+    /// Упрощенное представление сообщения в виде словаря поле-значение
+    /// </summary>
+    /// <typeparam name="T">Тип данных в котором будут хранится поля SerializedMessage</typeparam>
     public class SerializedMessage<T>
     {
         public Type messageType;
