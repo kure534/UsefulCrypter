@@ -55,6 +55,31 @@ namespace UsefulCrypter
             }
             return obj;
         }
-    }
+        public override string ToString()
+        {
+            string main = messageType.ToString() + System.Environment.NewLine;
+            foreach (var item in elementsValue)
+            {
+                main += item.Key.Name + " ";
 
+                if (item.Value.GetType() == typeof(System.String[]))
+                {
+                    string[] k = item.Value as string[];
+
+                    string value = "";
+                    foreach (var ve in k)
+                    {
+                        value += ve;
+                    }
+                    main += value;
+                }//если обобщенный тип является string[]
+                else
+                {
+                    main += item.Value.ToString();
+                }
+                main += System.Environment.NewLine;
+            }
+            return main;
+        }
+    }
 }
